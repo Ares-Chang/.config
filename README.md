@@ -1,3 +1,3 @@
 # My dotfiles
 
-This file records my.config environment
+This is my `.config` dotfiles file.
