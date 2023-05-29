@@ -18,13 +18,13 @@ pwsh=%SystemRoot%/System32/WindowsPowerShell/v1.0/powershell.exe -ExecutionPolic
 
 ;= rem Efficient operation
 cmua=nvim "%CMDER_ROOT%"\config\user_aliases.cmd
+~=cd C:\Users\%USERNAME%
 q=exit
 c=code .
 
 ;= rem JAVA run aliases
 mrun=mvn tomcat7:run $*
 mc=mvn clean
-~=cd C:\Users\%USERNAME%
 p=mvn tomcat7:run -P pro-out
 out=mvn tomcat7:run -P out
 
@@ -36,7 +36,6 @@ lint=nr lint
 lintf=nr lint --fix
 
 ;= rem git aliases
-
 gpl=git pull $*
 gp=git push $*
 
@@ -47,7 +46,7 @@ gcm=git commit -m $*
 gcam=git add -A && git commit -m $*
 
 gcl=git clone $*
-gst=git stash $*
+gsh=git stash $*
 
 gb=git branch $*
 gbd=git branch -d $*
@@ -56,3 +55,6 @@ gc=git checkout $*
 gcb=git checkout -b $*
 
 grh=git reset HEAD~1
+
+;= rem 帅就完了！
+neofetch=npx figlet "hello world"
