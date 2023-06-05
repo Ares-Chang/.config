@@ -34,25 +34,32 @@ d=nr dev $*
 b=nr build $*
 lint=nr lint
 lintf=nr lint --fix
+up=npx taze major -wir
 
 ;= rem git aliases
 gpl=git pull $*
 gp=git push $*
 
 gs=git status $*
-gl=git log
-ga=git add .
+gl=git log $*
+ga=git add $*
+ga.=git add .
 gcm=git commit -m $*
 gcam=git add -A && git commit -m $*
 
 gcl=git clone $*
 gsh=git stash $*
+gshp=git stash pop
 
 gb=git branch $*
 gbd=git branch -d $*
 
 gc=git checkout $*
 gcb=git checkout -b $*
+
+master=git checkout master
+main=git checkout main
+dev=git checkout develop
 
 grh=git reset HEAD~1
 
