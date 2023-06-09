@@ -37,12 +37,16 @@ lintf=nr lint --fix
 up=npx taze major -wir
 
 ;= rem git aliases
+ginit = git init
+
+gcuinit=git config user.name 这里替换你的昵称 && git config user.email 这里替换你的邮箱
+
 gpl=git pull $*
 gp=git push $*
 
 gs=git status $*
 gl=git log $*
-ga=git add $*
+ga=git add $* || git add .
 ga.=git add .
 gcm=git commit -m $*
 gcam=git add -A && git commit -m $*
@@ -53,6 +57,8 @@ gshp=git stash pop
 
 gb=git branch $*
 gbd=git branch -d $*
+
+gme=git merge $*
 
 gc=git checkout $*
 gcb=git checkout -b $*
