@@ -39,7 +39,7 @@ up=npx taze major -wir
 ;= rem git aliases
 ginit = git init
 
-gcuinit=git config user.name 这里替换你的昵称 && git config user.email 这里替换你的邮箱
+gcuinit=git config user.name chang && git config user.email 2622310479@qq.com
 
 gpl=git pull $*
 gp=git push $*
@@ -69,5 +69,5 @@ dev=git checkout develop
 
 grh=git reset HEAD~1
 
-;= rem 帅就完了！
+;= rem Very cool !!!
 neofetch=npx figlet "hello world"
