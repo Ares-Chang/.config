@@ -32,7 +32,9 @@ out=mvn tomcat7:run -P out
 r=nr -
 d=nr dev $*
 b=nr build $*
-lint=nr lint
+h5=nr dev:h5
+weixin=nr dev:mp-weixin
+lint=nr lint $*
 lintf=nr lint --fix
 up=npx taze major -wir
 
