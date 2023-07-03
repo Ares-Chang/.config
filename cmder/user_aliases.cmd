@@ -34,6 +34,7 @@ d=nr dev $*
 b=nr build $*
 h5=nr dev:h5
 weixin=nr dev:mp-weixin
+test=nr test $*
 lint=nr lint $*
 lintf=nr lint --fix
 up=npx taze major -wir
@@ -51,7 +52,7 @@ gl=git log $*
 ga=git add $* || git add .
 ga.=git add .
 gcm=git commit -m $*
-gcam=git add -A && git commit -m $*
+gam=git add -A && git commit -m $*
 
 gcl=git clone $*
 gsh=git stash $*
