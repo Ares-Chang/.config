@@ -24,13 +24,15 @@ c=code .
 
 ;= rem JAVA run aliases
 mrun=mvn tomcat7:run $*
-mc=mvn clean
+mc=mvn clean $*
+mcu=mvn clean install -e -U
 p=mvn tomcat7:run -P pro-out
 out=mvn tomcat7:run -P out
 
 ;= rem npm aliases
 r=nr -
 d=nr dev $*
+s=nr start $*
 b=nr build $*
 h5=nr dev:h5
 weixin=nr dev:mp-weixin
@@ -42,7 +44,7 @@ up=npx taze major -wir
 ;= rem git aliases
 ginit = git init
 
-gcuinit=git config user.name chang && git config user.email 2622310479@qq.com
+gcuinit=git config user.name chang && git config user.email areschang114@qq.com
 
 gpl=git pull $*
 gp=git push $*
