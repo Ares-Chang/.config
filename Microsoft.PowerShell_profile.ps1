@@ -12,7 +12,7 @@ if (!(Test-Path -Path $PROFILE)) {
 # https://ohmyposh.dev/
 
 # 设置 Theme 目录下随机主题
-$theme = Get-Childitem $env:POSH_THEMES_PATH | Get-Random
+$theme = Get-ChildItem $env:POSH_THEMES_PATH | Get-Random
 Write-Output "Hello! Today's lucky theme is $theme :)"
 oh-my-posh init pwsh --config $theme | Invoke-Expression
 
@@ -44,16 +44,16 @@ if ($profileContent -notcontains $profileEntry) {
 Set-Alias cmua OpenPROFile
 function OpenPROFile {
   if (Get-Command vim -ErrorAction SilentlyContinue) {
-    vim.exe $PROFILE
+    vim $PROFILE
   }
   elseif (Get-Command nvim -ErrorAction SilentlyContinue) {
-    nvim.exe $PROFILE
+    nvim $PROFILE
   }
   elseif (Get-Command code -ErrorAction SilentlyContinue) {
-    code.cmd $PROFILE
+    code $PROFILE
   }
   else {
-    notepad.exe $PROFILE
+    notepad $PROFILE
   }
 }
 
@@ -67,6 +67,17 @@ function ReloadProfile {
 Set-Alias ~ GoHome
 function GoHome {
   Set-Location $env:USERPROFILE
+}
+
+# cd 到 project 目录/指定目录
+Set-Alias project GoProject
+function GoProject([string]$path) {
+  if ([string]::IsNullOrWhiteSpace($path)) {
+    Set-Location $env:USERPROFILE/project
+  }
+  else {
+    Set-Location $env:USERPROFILE/project/$path
+  }
 }
 
 # 退出
@@ -238,7 +249,19 @@ function Set-GitUser {
 # Go to project root
 Set-Alias grt GitRoot
 function GitRoot {
-  Set-Location $(git rev-parse --show-toplevel)
+  $path = $(git rev-parse --show-toplevel)
+  # 这里需要做个判断，$path 是否获取成功，失败就不跳转
+  try {
+    if ($path -and (Test-Path $path -PathType Container)) {
+      Set-Location $path
+    }
+    else {
+      Write-Host "路径无效，无法进行跳转"
+    }
+  }
+  catch {
+    Write-Host "处理路径时出现错误: $_"
+  }
 }
 
 Set-Alias gpl GitPull
