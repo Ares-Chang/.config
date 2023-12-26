@@ -71,12 +71,18 @@ function GoHome {
 
 # cd 到 project 目录/指定目录
 Set-Alias project GoProject
-function GoProject([string]$path) {
-  if ([string]::IsNullOrWhiteSpace($path)) {
+function GoProject([string]$catalog) {
+  if ([string]::IsNullOrWhiteSpace($catalog)) {
     Set-Location $env:USERPROFILE/project
   }
   else {
-    Set-Location $env:USERPROFILE/project/$path
+    $path = "$env:USERPROFILE/project/$catalog"
+    if ($path -and (Test-Path $path -PathType Container)) {
+      Set-Location $path
+    } 
+    else {
+      Write-Host "路径无效，无法进行跳转"
+    }
   }
 }
 
