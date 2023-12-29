@@ -6,39 +6,85 @@ if (!(Test-Path -Path $PROFILE)) {
   New-Item -ItemType File -Path $PROFILE -Force
 }
 
+# -------------------------------------------------- #
+# 主题设置
+# -------------------------------------------------- #
+
 # ------------------------- #
 # oh-my-posh
 # ------------------------- #
 # https://ohmyposh.dev/
 
 # 设置 Theme 目录下随机主题
-$theme = Get-ChildItem $env:POSH_THEMES_PATH | Get-Random
-Write-Output "Hello! Today's lucky theme is $theme :)"
-oh-my-posh init pwsh --config $theme | Invoke-Expression
+# $theme = Get-ChildItem $env:POSH_THEMES_PATH | Get-Random
+# Write-Output "Hello! Today's lucky theme is $theme :)"
+# oh-my-posh init pwsh --config $theme | Invoke-Expression
+
+# ------------------------- #
+# starship
+# ------------------------- #
+# https://starship.rs/zh-CN/
+Invoke-Expression (&starship init powershell)
 
 # 开启文件/文件夹图标 https://github.com/devblackops/Terminal-Icons
 Import-Module -Name Terminal-Icons
-Remove-Item Alias:ni -Force -ErrorAction Ignore
+
+# -------------------------------------------------- #
+# 导入插件
+# -------------------------------------------------- #
+
+# ------------------------- #
+# PSReadLine
+# ------------------------- #
+# https://github.com/PowerShell/PSReadLine
+# 设置 Tab 为补全的快捷键
+# Set-PSReadLineKeyHandler -Key "Tab" -Function MenuComplete
+# 设置 Ctrl + Z 为撤销
+Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
+
+# ------------------------- #
+# 开启 git 命令补全
+# ------------------------- #
+# https://github.com/dahlbyk/posh-git
+# Import-Module posh-git
+
+# ------------------------- #
+# z
+# ------------------------- #
+# https://github.com/badmotorfinger/z
+Import-Module z 
+
+# ------------------------- #
+# 语法高亮
+# ------------------------- #
+Import-Module syntax-highlighting
 
 # ------------------------- #
 # 修复 ni 命令被占用
 # ------------------------- #
 # https://github.com/antfu/ni
 
+Remove-Item Alias:ni -Force -ErrorAction Ignore
 $profileEntry = 'Remove-Item Alias:ni -Force -ErrorAction Ignore'
 $profileContent = Get-Content $profile
 if ($profileContent -notcontains $profileEntry) {
   ("`n" + $profileEntry) | Out-File $profile -Append -Force -Encoding UTF8
 }
 
-# ------------------------- #
+# -------------------------------------------------- #
 # 自定义别名
-# ------------------------- #
+# -------------------------------------------------- #
 # https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/set-alias?view=powershell-7.3
 
 # ------------------------- #
 # Efficient Operation
 # ------------------------- #
+
+# 查看环境变量
+Set-Alias env CatEnv
+function CatEnv {
+  Get-ChildItem Env: | Format-Table -AutoSize
+}
 
 # 打开配置
 Set-Alias cmua OpenPROFile
@@ -91,6 +137,8 @@ Set-Alias q UseExit
 function UseExit {
   exit
 }
+
+Set-Alias ip ipconfig
 
 # 使用 VS Code 打开目录/文件
 Set-Alias c OpenFile
