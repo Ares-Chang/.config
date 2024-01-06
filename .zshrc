@@ -41,10 +41,24 @@ source $ZSH/oh-my-zsh.sh
 alias cmua='vim ~/.zshrc'
 
 alias q='exit'
+alias c='code .'
 alias e.='explorer.exe .'
 
 alias lsa='ls -a'
 alias cls='clear'
+
+# -------------------------------- #
+# Directories
+#
+# I put
+# `~/i` for my projects
+# `~/f` for forks
+# `~/w` for workspace
+# -------------------------------- #
+
+alias i='cd ~/i'
+alias f='cd ~/f'
+alias w='cd ~/w'
 
 # ------------------------- #
 # Java run aliases
@@ -139,3 +153,10 @@ alias grh='git reset HEAD~1'
 alias dev='git checkout develop'
 alias main='git checkout main'
 alias master='git checkout master'
+
+# -------------------------------------------------- #
+# nvm 配置，须在最后
+# -------------------------------------------------- #
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
