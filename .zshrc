@@ -31,6 +31,13 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # -------------------------------------------------- #
+# nvm 配置
+# -------------------------------------------------- #
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# -------------------------------------------------- #
 # 自定义别名
 # -------------------------------------------------- #
 
@@ -56,9 +63,15 @@ alias cls='clear'
 # `~/w` for workspace
 # -------------------------------- #
 
-alias i='cd ~/i'
-alias f='cd ~/f'
-alias w='cd ~/w'
+function i {
+  cd ~/i/$1
+}
+function f {
+  cd ~/f/$1
+}
+function w {
+  cd ~/w/$1
+}
 
 # ------------------------- #
 # Java run aliases
@@ -153,10 +166,3 @@ alias grh='git reset HEAD~1'
 alias dev='git checkout develop'
 alias main='git checkout main'
 alias master='git checkout master'
-
-# -------------------------------------------------- #
-# nvm 配置，须在最后
-# -------------------------------------------------- #
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
