@@ -5,6 +5,14 @@ export ZSH="$HOME/.oh-my-zsh"
 # 如果想要知道当前使用的主题名称，可以运行 echo $ZSH_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+
+# -------------------------------------------------- #
+# Spaceship 配置
+# git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+# ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+# -------------------------------------------------- #
+# https://spaceship-prompt.sh/
+
 # ZSH_THEME="spaceship"
 
 # zsh 命令修正
@@ -168,3 +176,11 @@ alias grh='git reset HEAD~1'
 alias dev='git checkout develop'
 alias main='git checkout main'
 alias master='git checkout master'
+
+# -------------------------------------------------- #
+# Spaceship 配置
+# curl -sS https://starship.rs/install.sh | sh
+# -------------------------------------------------- #
+# https://starship.rs/
+
+eval "$(starship init zsh)"
