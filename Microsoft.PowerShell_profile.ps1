@@ -77,6 +77,13 @@ if ($profileContent -notcontains $profileEntry) {
 # https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/set-alias?view=powershell-7.3
 
 # ------------------------- #
+# gsudo
+# winget install gerardog.gsudo
+# ------------------------- #
+# https://github.com/gerardog/gsudo/
+Set-Alias sudo gsudo
+
+# ------------------------- #
 # Efficient Operation
 # ------------------------- #
 
