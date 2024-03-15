@@ -90,7 +90,7 @@ function w {
 alias mrun='mvn tomcat7:run'
 alias mc='mvn clean'
 alias mcu='mvn clean install -e -U'
-alias p='mvn tomcat7:run -P pro-out'
+alias pro='mvn tomcat7:run -P pro-out'
 alias out='mvn tomcat7:run -P out'
 
 # ------------------------- #
@@ -102,6 +102,7 @@ alias nio='ni --prefer-offline'
 
 alias r='nr -'
 alias d='nr dev'
+alias p='nr play'
 alias s='nr start'
 alias b='nr build'
 alias bw='nr build --watch'

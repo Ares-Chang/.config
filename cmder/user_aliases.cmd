@@ -26,12 +26,13 @@ c=code .
 mrun=mvn tomcat7:run $*
 mc=mvn clean $*
 mcu=mvn clean install -e -U
-p=mvn tomcat7:run -P pro-out
+pro=mvn tomcat7:run -P pro-out
 out=mvn tomcat7:run -P out
 
 ;= rem npm aliases
 r=nr -
 d=nr dev $*
+p=nr play $*
 s=nr start $*
 b=nr build $*
 h5=nr dev:h5

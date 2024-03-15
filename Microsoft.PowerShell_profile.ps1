@@ -190,7 +190,7 @@ function MvnCleanInstall {
   mvn clean install -e -U @Args
 }
 
-Set-Alias p MvnProOut
+Set-Alias pro MvnProOut
 function MvnProOut {
   mvn tomcat7:run -P pro-out @Args
 }
@@ -213,6 +213,11 @@ function NrLastModel {
 Set-Alias d NrDev
 function NrDev {
   nr dev @Args
+}
+
+Set-Alias p NrPlay
+function NrPlay {
+  nr play @Args
 }
 
 Set-Alias s NrStart
